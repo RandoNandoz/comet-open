@@ -27,8 +27,8 @@ jobs:
           tags: my-app-image:latest
           outputs: type=local,dest=./artifacts
 
-#      - name: Test Build
-#        run: mkdir -p artifacts && touch artifacts/test.txt
+      # - name: Test Build
+      #   run: mkdir -p artifacts && touch artifacts/test.txt
 
       - name: Display structure of downloaded files
         run: ls -R ./artifacts
@@ -37,7 +37,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: site
-          path: artifacts
+          # we exclude /var/log/nginx cuz it breaks things...?
+          path: |
+            ./artifacts
+            !./artifacts/var/log/nginx
     
   deploy:
     needs: build
