@@ -37,10 +37,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: site
-          # we exclude /var/log/nginx cuz it breaks things...?
-          path: |
-            ./artifacts
-            !./artifacts/var/log/nginx
+          path: ./artifacts
     
   deploy:
     needs: build

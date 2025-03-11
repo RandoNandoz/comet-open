@@ -12,7 +12,7 @@ RUN mkdir output
 RUN quarto render --output-dir output
 
 # Final Stage (Added this so it can be ran locally and tested properly)
-FROM nginx:alpine
-COPY --from=builder /app/output /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# FROM nginx:alpine
+# COPY --from=builder /app/output /usr/share/nginx/html
+# EXPOSE 80
+# CMD ["nginx", "-g", "daemon off;"]
